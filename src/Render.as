@@ -4,24 +4,22 @@ package
 	 * ...
 	 * @author Andreas Schaafsma
 	 */
-	import flash.display.Bitmap;
-	import flash.display.BitmapData;
-	import flash.display.Graphics;
-	import flash.display.Sprite;
-	import flash.geom.Point;
-	
+	//my dependencies
 	import Geometry.Vertex;
-	
-	import Logic.Vec3d;
-	import Logic.Math3d;
-	import Logic.Point3D;
-	
+	import logic.Vec3d;
+	import logic.Math3d;
+	import logic.Point3D;
 	import game.Game;
 	import game.World;
 	import game.entities.WorldSpawn;
 	import game.entities.hud.FrameRateDisplay
 	import game.entities.hud.ButtonPressDisplay;
-	
+	//Flash dependencies
+	import flash.display.Bitmap;
+	import flash.display.BitmapData;
+	import flash.display.Graphics;
+	import flash.display.Sprite;
+	import flash.geom.Point;
 	public class Render 
 	{
 		public static var graphics:Graphics;
@@ -55,6 +53,20 @@ package
 			graphics.drawCircle(position.x, position.y, radius);
 			graphics.endFill();
 		}
+		public static function drawPolygonProto(points:Array):void
+		{
+			graphics.beginFill(0xff00ff);
+			var a:Point = points[0];
+			graphics.moveTo(a.x, a.y);
+			points.slice(1, points.length - 1);
+			for each (var b:Point in points) 
+			{
+				graphics.lineTo(b.x, b.y);
+			}
+			graphics.lineTo(a.x, a.y);
+			graphics.endFill();
+		}
+		public static var screenSpaceOrigin:logic.Point3D = new logic.Point3D(Game.screenWidth/2, Game.screenHeight/2, 0);
 		/*
 		 * RENDERWORLD
 		 * 
@@ -66,42 +78,25 @@ package
 		public static function renderWorld():void
 		{
 			
-			var cam:Logic.Vec3d = game.Game.player.cam;
+			var cam:logic.Vec3d = game.Game.player.cam;
+			graphics = sprite3.graphics;
+			graphics.clear();
 			if (perspective == 0){
-				graphics = sprite1.graphics;
-				graphics.clear();
-				graphics.beginFill(0x00ff00);
-				graphics.drawRect(0,0,800,600)
-				graphics.endFill();
 				Render.drawCircle(new Point(cam.x, cam.y), 8, 0x000000);
 				Render.drawLine(new Point(cam.x, cam.y), new Point(cam.x + cam.xOff, cam.y + cam.yOff), 1, 0);
 				drawPoints(perspective);
 			}
 			if (perspective == 1){
-				graphics = sprite3.graphics;
-				graphics.clear();
-				graphics.beginFill(0xffff00);
-				graphics.drawRect(0,0,800,600)
-				graphics.endFill();
 				Render.drawCircle(new Point(screenSpaceOrigin.x, screenSpaceOrigin.y), 8, 0x000000);
-				//Render.drawLine(new Point(screenSpaceOrigin.x, screenSpaceOrigin.y), new Point(screenSpaceOrigin.x+ cam.mag, screenSpaceOrigin.y), 1, 0);
 				drawPoints(perspective);
 			}
 			if (perspective == 2){
-				graphics = sprite3.graphics;
-				graphics.clear();
-				graphics.beginFill(0x0000ff);
-				graphics.drawRect(0,0,800,600)
-				graphics.endFill();
-				Render.drawCircle(new Point(screenSpaceOrigin.x, screenSpaceOrigin.y), 8, 0x000000);
-				//Render.drawLine(new Point(screenSpaceOrigin.x, screenSpaceOrigin.y), new Point(screenSpaceOrigin.x+ cam.mag, screenSpaceOrigin.y), 1, 0);
 				drawPoints(perspective);
 			}
 		}
-		public static var screenSpaceOrigin:Logic.Point3D = new Logic.Point3D(400, 300, 0);
 		public static function drawPoints(perspective:int):void
 		{
-			var cam:Logic.Vec3d = game.Game.player.cam;
+			var cam:logic.Vec3d = game.Game.player.cam;
 			if(perspective == 0){
 				for each (var i:Vertex in world.vertices) 
 				{
@@ -111,14 +106,14 @@ package
 			else if(perspective == 1){
 				for each (var j:Vertex in world.vertices) 
 				{
-					var a:Point3D = Logic.Math3d.globalToLocal2D(cam,j,screenSpaceOrigin)
+					var a:Point3D = logic.Math3d.globalToLocal2D(cam,j,screenSpaceOrigin)
 					Render.drawCircle(new Point(a.x,a.y), 8, 0xff0000);
 				}
 			}
 			else if(perspective == 2){
 				for each (var k:Vertex in world.vertices) 
 				{
-					Render.drawCircle(Logic.Math3d.toScreenSpace(cam, k),8,0xff0000);
+					Render.drawCircle(logic.Math3d.toScreenSpace(cam, k),8,0xff0000);
 				}
 			}
 		}

@@ -1,4 +1,4 @@
-package Logic 
+package logic 
 {
 	/**
 	 * ...
@@ -24,19 +24,25 @@ package Logic
 					game.entities.Base.buttonForward = a;
 					break;
 				case Keyboard.A:
-					game.entities.Base.buttonLeft = a;
+					game.entities.Base.buttonStrafeLeft = a;
 					break;
 				case Keyboard.S:
 					game.entities.Base.buttonBack = a;
 					break;
 				case Keyboard.D:
-					game.entities.Base.buttonRight = a;
+					game.entities.Base.buttonStrafeRight = a;
 					break;
 				case Keyboard.UP:
 					game.entities.Base.buttonRotateUp = a;
 					break;
 				case Keyboard.DOWN:
 					game.entities.Base.buttonRotateDown = a;
+					break;
+				case Keyboard.LEFT:
+					game.entities.Base.buttonLeft = a;
+					break;
+				case Keyboard.RIGHT:
+					game.entities.Base.buttonRight = a;
 					break;
 				case Keyboard.NUMBER_1:
 					Render.perspective = 0;

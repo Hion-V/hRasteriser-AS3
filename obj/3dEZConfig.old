@@ -16,7 +16,7 @@
     </define>
     <define append="true">
       <name>CONFIG::timeStamp</name>
-      <value>'7-2-2018'</value>
+      <value>'8-2-2018'</value>
     </define>
     <define append="true">
       <name>CONFIG::air</name>
@@ -39,10 +39,10 @@
   <file-specs>
     <path-element>C:\Users\Andreas\Documents\3dEZ\src\Main.as</path-element>
   </file-specs>
-  <default-background-color>#FFFFFF</default-background-color>
+  <default-background-color>#222288</default-background-color>
   <default-frame-rate>60</default-frame-rate>
   <default-size>
-    <width>800</width>
-    <height>600</height>
+    <width>1280</width>
+    <height>720</height>
   </default-size>
 </flex-config>

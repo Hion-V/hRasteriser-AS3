@@ -1,7 +1,7 @@
-package Logic 
+package logic 
 {
 	import Geometry.Vertex;
-	import Logic.Vec3d;
+	import logic.Vec3d;
 	import flash.geom.Point;
 	import game.Game;
 	/**
@@ -10,7 +10,7 @@ package Logic
 	 */
 	public class Math3d 
 	{
-		public static function averagePoints(points:Array):Logic.Point3D
+		public static function averagePoints(points:Array):logic.Point3D
 		{
 			var pointsX:Number;
 			var pointsY:Number;
@@ -23,10 +23,10 @@ package Logic
 			pointsX /= points.length;
 			pointsY /= points.length;
 			pointsZ /= points.length;
-			return new Logic.Point3D([pointsX, pointsY, pointsZ]);
+			return new logic.Point3D([pointsX, pointsY, pointsZ]);
 		}
-		public static var renderVector:Logic.Vec3d = new Logic.Vec3d();
-		public static function globalToLocal2D(cam:Logic.Vec3d, target:Vertex, origin:Point3D):Point3D
+		public static var renderVector:logic.Vec3d = new logic.Vec3d();
+		public static function globalToLocal2D(cam:logic.Vec3d, target:Vertex, origin:Point3D):Point3D
 		{
 			renderVector.fromPoint([cam.x, cam.y, cam.z],  [target.x, target.y, target.z]);
 			renderVector.fromAngle([cam.x, cam.y, cam.z], [renderVector.degreesFromZ - cam.degreesFromZ, renderVector.degreesFromX - cam.degreesFromX], pyth([renderVector.xOff, renderVector.yOff]));
@@ -35,11 +35,24 @@ package Logic
 		}
 		public static var degreesPerPixelX:Number = Game.fovHor / Game.screenWidth
 		public static var degreesPerPixelY:Number = Game.fovVert / Game.screenHeight
-		public static function toScreenSpace(cam:Logic.Vec3d, target:Vertex):Point
+		public static function toScreenSpace(cam:logic.Vec3d, target:Vertex):Point
 		{
 			renderVector.fromPoint([cam.x, cam.y, cam.z], [target.x, target.y, target.z]);
-			renderVector.fromAngle([cam.x, cam.y, cam.z], [renderVector.degreesFromZ + cam.degreesFromZ, renderVector.degreesFromX - cam.degreesFromX + 45], renderVector.mag);
-			return new Point((renderVector.degreesFromX)/ degreesPerPixelX, (renderVector.degreesFromZ) / degreesPerPixelY);
+			renderVector.fromAngle([cam.x, cam.y, cam.z], [renderVector.degreesFromZ + cam.degreesFromZ + 37, renderVector.degreesFromX - cam.degreesFromX + 45], renderVector.mag);
+			if (renderVector.degreesFromX > 180){
+				renderVector.degreesFromX -= 360
+			}
+			if (renderVector.degreesFromX < -180){
+				renderVector.degreesFromX += 360
+			}
+			if (renderVector.degreesFromZ > 180){
+				renderVector.degreesFromZ -= 360
+			}
+			if (renderVector.degreesFromZ < -180){
+				renderVector.degreesFromZ += 360
+			}
+			renderVector.fromAngle([cam.x, cam.y, cam.z], [renderVector.degreesFromZ, renderVector.degreesFromX], renderVector.mag);
+			return new Point((renderVector.degreesFromX) / degreesPerPixelX, (renderVector.degreesFromZ) / degreesPerPixelY);
 		}
 		public static function pyth(terms:Array):Number
 		{

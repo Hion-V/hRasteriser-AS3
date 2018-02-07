@@ -1,6 +1,6 @@
 package game.entities 
 {
-	import Logic.Vec3d;
+	import logic.Vec3d;
 	/**
 	 * ...
 	 * @author Andreas Schaafsma
@@ -9,7 +9,7 @@ package game.entities
 	{
 		public var angles:Array = [0.0, 0.0, 0.0]//X,Y,Z
 		public var pos:Array = [0.0, 0.0, 0.0]//X,Y,Z
-		public var cam:Logic.Vec3d;
+		public var cam:logic.Vec3d;
 		public var speed:Number = 0.001;
 		public var turnSpeed:Number = 0.3;
 		public function Player(_pos:Array, _angles:Array) 
@@ -17,7 +17,7 @@ package game.entities
 			super();
 			pos = _pos;
 			angles = _angles;
-			cam = new Logic.Vec3d();
+			cam = new logic.Vec3d();
 			cam.fromAngle([400, 300, 0], [0, 0, 0], 100);
 			cam.debugData();
 			trace("Player Entity Index: " + entityIndex);
@@ -32,6 +32,18 @@ package game.entities
 				case 1:
 					pos[0] -= speed * cam.xOff*timeElapsed;
 					pos[1] -= speed * cam.yOff*timeElapsed;
+					break;
+				case 2:
+					var a:Vec3d = new Vec3d();
+					a.fromAngle([cam.z, cam.y, cam.z], [cam.degreesFromZ, cam.degreesFromX - 90], cam.mag);
+					pos[0] -= speed * a.xOff*timeElapsed;
+					pos[1] -= speed * a.yOff * timeElapsed;
+					break;
+				case 3:
+					var b:Vec3d = new Vec3d();
+					b.fromAngle([cam.z, cam.y, cam.z], [cam.degreesFromZ, cam.degreesFromX + 90], cam.mag);
+					pos[0] -= speed * b.xOff*timeElapsed;
+					pos[1] -= speed * b.yOff * timeElapsed;
 					break;
 			}
 		}
@@ -63,6 +75,10 @@ package game.entities
 				move(0);
 			if (buttonBack)
 				move(1);
+			if (buttonStrafeRight)
+				move(2);
+			if (buttonStrafeLeft)
+				move(3);
 			if (buttonRotateUp)
 				angles[0]++
 			if (buttonRotateDown)

@@ -1,8 +1,8 @@
 package
 {
-	import Logic.Vec3d;
-	import Logic.Input;
-	import Logic.Point3D;
+	import logic.Vec3d;
+	import logic.Input;
+	import logic.Point3D;
 	import game.Game;
 	import game.Screen;
 	import game.entities.Base;
@@ -41,8 +41,8 @@ package
 		public function handleEvents():void
 		{
 			addEventListener(Event.ENTER_FRAME, onEnterFrame);
-			stage.addEventListener(KeyboardEvent.KEY_DOWN, Logic.Input.onKey);
-			stage.addEventListener(KeyboardEvent.KEY_UP, Logic.Input.onKey);
+			stage.addEventListener(KeyboardEvent.KEY_DOWN, logic.Input.onKey);
+			stage.addEventListener(KeyboardEvent.KEY_UP, logic.Input.onKey);
 		}
 		public function constructWorld():void
 		{

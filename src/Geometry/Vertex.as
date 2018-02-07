@@ -1,6 +1,6 @@
 package Geometry 
 {
-	import Logic.Vec3d;
+	import logic.Vec3d;
 	/**
 	 * ...
 	 * @author Andreas Schaafsma

@@ -1,11 +1,11 @@
-package Logic 
+package logic 
 {
-	import Logic.Point3D;
+	import logic.Point3D;
 	/**
 	 * ...
 	 * @author Andreas Schaafsma
 	 */
-	public class Vec3d extends Logic.Point3D
+	public class Vec3d extends logic.Point3D
 	{
 		public var xOff:Number;
 		public var yOff:Number;
