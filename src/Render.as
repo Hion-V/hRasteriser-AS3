@@ -29,7 +29,7 @@ package
 		public static var sprite1:Sprite;
 		public static var sprite2:Sprite;
 		public static var sprite3:Sprite;
-		public static var perspective:int = 0;
+		public static var perspective:int = 2;
 		public static var world:World = new World();
 		public static function doRender():void
 		{
