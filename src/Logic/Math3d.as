@@ -38,8 +38,8 @@ package Logic
 		public static function toScreenSpace(cam:Logic.Vec3d, target:Vertex):Point
 		{
 			renderVector.fromPoint([cam.x, cam.y, cam.z], [target.x, target.y, target.z]);
-			renderVector.fromAngle([cam.x, cam.y, cam.z], [cam.degreesFromZ + renderVector.degreesFromZ, cam.degreesFromX + renderVector.degreesFromX], renderVector.mag);
-			return new Point(degreesPerPixelX * renderVector.degreesFromX, degreesPerPixelY * renderVector.degreesFromZ);
+			renderVector.fromAngle([cam.x, cam.y, cam.z], [renderVector.degreesFromZ + cam.degreesFromZ, renderVector.degreesFromX - cam.degreesFromX + 45], renderVector.mag);
+			return new Point((renderVector.degreesFromX)/ degreesPerPixelX, (renderVector.degreesFromZ) / degreesPerPixelY);
 		}
 		public static function pyth(terms:Array):Number
 		{

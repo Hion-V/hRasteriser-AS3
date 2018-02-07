@@ -38,17 +38,19 @@ package game.entities
 		override public function think():void
 		{
 			doInputs();
-			cam.fromAngle(pos, angles, 100);
 			fixAngles();
+			cam.fromAngle(pos, angles, 100);
 		}
 		private function fixAngles():void
 		{
-			for each (var a:Number in angles) 
+			for (var i:int = 0; i < angles.length; i++) 
 			{
-				if (a > 360)
-					a -= 360;
-				if (a < 0)
-					a += 360;
+				if (angles[i] > 180){
+					angles[i] -= 360;
+				}
+				if (angles[i] < -180){
+					angles[i] += 360;
+				}
 			}
 		}
 		public function doInputs():void

@@ -16,7 +16,7 @@
     </define>
     <define append="true">
       <name>CONFIG::timeStamp</name>
-      <value>'2-2-2018'</value>
+      <value>'7-2-2018'</value>
     </define>
     <define append="true">
       <name>CONFIG::air</name>
@@ -33,7 +33,7 @@
     <verbose-stacktraces>true</verbose-stacktraces>
     <source-path append="true">
       <path-element>C:\Users\Andreas\Documents\3dEZ\src</path-element>
-      <path-element>D:\fd\Library\AS3\classes</path-element>
+      <path-element>D:\FD\Library\AS3\classes</path-element>
     </source-path>
   </compiler>
   <file-specs>

@@ -44,6 +44,9 @@ package Logic
 				case Keyboard.NUMBER_2:
 					Render.perspective = 1;
 					break;
+				case Keyboard.NUMBER_3:
+					Render.perspective = 2;
+					break;
 			}
 		}
 		

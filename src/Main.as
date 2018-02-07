@@ -27,27 +27,16 @@ package
 		
 		public function Main() 
 		{
-			var a:Screen = new Screen();
-			var b:Screen = new Screen();
-			var mask1:Sprite = new Sprite();
-			mask1.graphics.beginFill(0x000000);
-			mask1.graphics.drawRect(0, 0, 400, 600);
-			var mask2:Sprite = new Sprite();
-			mask2.graphics.beginFill(0x000000);
-			mask2.graphics.drawRect(400, 0, 800, 600);
-			a.mask = mask1;
-			b.mask = mask2;
-			addChild(a);
-			addChild(b);
-			addChild(mask1);
-			addChild(mask2);
-			Render.stage = stage;
-			Render.sprite1 = a;
-			Render.sprite2 = b;
-			Render.sprite3 = this;
-			Render.graphics = graphics;
 			handleEvents();
+			setupRenderer();
 			constructWorld();
+		}
+		private function setupRenderer():void
+		{
+			Render.stage = stage;
+			Render.sprite3 = Render.sprite2 = Render.sprite1 = this;
+			Render.graphics = graphics;
+			Render.drawHud();
 		}
 		public function handleEvents():void
 		{
@@ -57,19 +46,7 @@ package
 		}
 		public function constructWorld():void
 		{
-			//Render.worldSpawn = new WorldSpawn();
 			var clock:Clock = new Clock();
-			createHudElements();
-			var a:Logic.Point3D = new Logic.Point3D([100, 200, 0]);
-			a = new Logic.Point3D([300, 200, 0]);
-		}
-		public function createHudElements():void
-		{
-			var fpsDisp:FrameRateDisplay = new FrameRateDisplay();
-			var btnDisp:ButtonPressDisplay = new ButtonPressDisplay();
-			fpsDisp.elementBitmap.scaleX = fpsDisp.elementBitmap.scaleY = 
-			btnDisp.elementBitmap.scaleX = btnDisp.elementBitmap.scaleY = 3;
-			btnDisp.elementBitmap.y = 3 * 8 + 3;
 		}
 		public function onEnterFrame(e:Event):void
 		{
