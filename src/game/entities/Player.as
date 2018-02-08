@@ -55,6 +55,10 @@ package game.entities
 		}
 		private function fixAngles():void
 		{
+			if (angles[0] > 90)
+				angles[0] = 90
+			if (angles[0] < -90)
+				angles[0] = -90
 			for (var i:int = 0; i < angles.length; i++) 
 			{
 				if (angles[i] > 180){

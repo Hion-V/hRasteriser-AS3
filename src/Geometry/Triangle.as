@@ -22,7 +22,7 @@ package Geometry
 			p3 = _p3;
 			createTriangle();
 		}
-		public function createTriangle():void
+		private function createTriangle():void
 		{
 			p1.fromPoint([p1.x, p1.y, p2.z], [p2.x, p2.y, p2.z]);
 			p2.fromPoint([p2.x, p2.y, p2.z], [p3.x, p3.y, p3.z]);
