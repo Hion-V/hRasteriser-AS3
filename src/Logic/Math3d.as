@@ -38,7 +38,7 @@ package logic
 		public static function toScreenSpace(cam:logic.Vec3d, target:Vertex):Point
 		{
 			renderVector.fromPoint([cam.x, cam.y, cam.z], [target.x, target.y, target.z]);
-			renderVector.fromAngle([cam.x, cam.y, cam.z], [renderVector.degreesFromZ + cam.degreesFromZ + 37, renderVector.degreesFromX - cam.degreesFromX + 45], renderVector.mag);
+			renderVector.fromAngle([cam.x, cam.y, cam.z], [renderVector.degreesFromZ + cam.degreesFromZ, renderVector.degreesFromX - cam.degreesFromX], renderVector.mag);
 			if (renderVector.degreesFromX > 180){
 				renderVector.degreesFromX -= 360
 			}
@@ -52,7 +52,7 @@ package logic
 				renderVector.degreesFromZ += 360
 			}
 			renderVector.fromAngle([cam.x, cam.y, cam.z], [renderVector.degreesFromZ, renderVector.degreesFromX], renderVector.mag);
-			return new Point((renderVector.degreesFromX) / degreesPerPixelX, (renderVector.degreesFromZ) / degreesPerPixelY);
+			return new Point((renderVector.degreesFromX) / degreesPerPixelX+Game.screenWidth/2, (renderVector.degreesFromZ) / degreesPerPixelY +Game.screenHeight/2);
 		}
 		public static function pyth(terms:Array):Number
 		{

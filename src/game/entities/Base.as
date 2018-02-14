@@ -6,8 +6,8 @@ package game.entities
 	 */
 	public class Base 
 	{
-		public static var buttonLeft:Boolean = false;
-		public static var buttonRight:Boolean = false;
+		public static var buttonTurnLeft:Boolean = false;
+		public static var buttonTurnRight:Boolean = false;
 		public static var buttonForward:Boolean = false;
 		public static var buttonBack:Boolean = false;
 		public static var buttonRotateUp:Boolean = false;

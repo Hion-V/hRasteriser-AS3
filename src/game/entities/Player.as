@@ -71,9 +71,9 @@ package game.entities
 		}
 		public function doInputs():void
 		{
-			if(buttonRight)
+			if(buttonTurnRight)
 				angles[1]+=turnSpeed*timeElapsed;
-			if(buttonLeft)
+			if(buttonTurnLeft)
 				angles[1]-=turnSpeed*timeElapsed;
 			if (buttonForward)
 				move(0);

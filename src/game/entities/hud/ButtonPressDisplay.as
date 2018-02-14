@@ -27,9 +27,9 @@ package game.entities.hud
 				a += "up";
 			if (game.entities.Base.buttonRotateDown)
 				a += "down";
-			if (game.entities.Base.buttonLeft)
+			if (game.entities.Base.buttonTurnLeft)
 				a += "left";
-			if (game.entities.Base.buttonRight)
+			if (game.entities.Base.buttonTurnRight)
 				a += "right";
 			hudText = a;
 			super.think();

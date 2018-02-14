@@ -39,10 +39,10 @@ package logic
 					game.entities.Base.buttonRotateDown = a;
 					break;
 				case Keyboard.LEFT:
-					game.entities.Base.buttonLeft = a;
+					game.entities.Base.buttonTurnLeft = a;
 					break;
 				case Keyboard.RIGHT:
-					game.entities.Base.buttonRight = a;
+					game.entities.Base.buttonTurnRight = a;
 					break;
 				case Keyboard.NUMBER_1:
 					Render.perspective = 0;
