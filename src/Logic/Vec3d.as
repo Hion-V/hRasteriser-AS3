@@ -46,9 +46,9 @@ package logic
 			x = p1[0];
 			y = p1[1];
 			z = p1[2];
-			mag = _mag;//schuin
+			mag = _mag;	//schuin
 			degreesFromZ = ang[0];
-			radsFromZ = degreesFromZ / radConst
+			radsFromZ = degreesFromZ / radConst;
 			degreesFromX = ang[1];
 			radsFromX = degreesFromX / radConst;
 			magXY = Math.cos(radsFromZ) * mag;

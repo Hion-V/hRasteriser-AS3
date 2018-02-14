@@ -17,7 +17,6 @@ package
 	import flash.events.Event;
 	import flash.events.KeyboardEvent;
 	import flash.geom.Point;
-	
 	/**
 	 * ...
 	 * @author Andreas Schaafsma
