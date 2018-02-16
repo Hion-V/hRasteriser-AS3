@@ -113,7 +113,7 @@ package
 			else if(perspective == 2){
 				for each (var k:Vertex in world.vertices) 
 				{
-					Render.drawCircle(logic.Math3d.toScreenSpace(cam, k),8,0xff0000);
+					Render.drawCircle(k.getScreenSpace(cam),8,0xff0000);
 				}
 			}
 		}
