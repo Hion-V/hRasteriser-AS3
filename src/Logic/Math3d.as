@@ -33,27 +33,6 @@ package logic
 			target.screenSpaceCoords = [origin.x + renderVector.xOff, origin.y + renderVector.yOff, renderVector.zOff - origin.z];
 			return new Point3D(target.screenSpaceCoords);
 		}
-		public static var degreesPerPixelX:Number = Game.fovHor / Game.screenWidth
-		public static var degreesPerPixelY:Number = Game.fovVert / Game.screenHeight
-		public static function toScreenSpace(cam:logic.Vec3d, target:Vertex):Point
-		{
-			renderVector.fromPoint([cam.x, cam.y, cam.z], [target.x, target.y, target.z]);
-			renderVector.fromAngle([cam.x, cam.y, cam.z], [renderVector.degreesFromZ + cam.degreesFromZ, renderVector.degreesFromX - cam.degreesFromX], renderVector.mag);
-			if (renderVector.degreesFromX > 180){
-				renderVector.degreesFromX -= 360
-			}
-			if (renderVector.degreesFromX < -180){
-				renderVector.degreesFromX += 360
-			}
-			if (renderVector.degreesFromZ > 180){
-				renderVector.degreesFromZ -= 360
-			}
-			if (renderVector.degreesFromZ < -180){
-				renderVector.degreesFromZ += 360
-			}
-			renderVector.fromAngle([cam.x, cam.y, cam.z], [renderVector.degreesFromZ, renderVector.degreesFromX], renderVector.mag);
-			return new Point((renderVector.degreesFromX) / degreesPerPixelX+Game.screenWidth/2, (renderVector.degreesFromZ) / degreesPerPixelY +Game.screenHeight/2);
-		}
 		public static function pyth(terms:Array):Number
 		{
 			var powers:Number = 0;
