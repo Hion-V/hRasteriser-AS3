@@ -1,5 +1,6 @@
 package game 
 {
+	import Geometry.test.VertexCube;
 	import Geometry.Triangle;
 	import Geometry.Vertex;
 	/**
@@ -12,14 +13,10 @@ package game
 		public var geometry:Array = [];
 		public function World() 
 		{
-			vertices.push(new Vertex([100, 100, 50]));
-			vertices.push(new Vertex([200, 100, 50]));
-			vertices.push(new Vertex([100, 200, 50]));
-			vertices.push(new Vertex([200, 200, 50]));			
-			vertices.push(new Vertex([100, 100, -50]));			
-			vertices.push(new Vertex([200, 100, -50]));
-			vertices.push(new Vertex([100, 200, -50]));
-			vertices.push(new Vertex([200, 200, -50]));
+			geometry.push(new VertexCube(400, 300, 100, 100, 200, 300));
+			for each (var a:* in geometry){
+				vertices = vertices.concat(a.vertices);
+			}
 		}
 		
 	}
