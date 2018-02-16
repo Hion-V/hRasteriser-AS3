@@ -43,6 +43,12 @@ package logic
 		}
 		public function fromAngle(p1:Array, ang:Array, _mag:Number = 0):void
 		{
+			for each (var a:Number in ang){
+				if (a > 180)
+					a -= 360
+				if (a < -180)
+					a += 360
+			}
 			x = p1[0];
 			y = p1[1];
 			z = p1[2];
